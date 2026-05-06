@@ -1,7 +1,7 @@
 import os
 import torch
 import numpy as np
-from src.evaluation.performance import eval_affect
+from .evaluation.performance import eval_affect
 
 def train_epoch(model, dataloader, optimizer, criterion, device='cuda', clip_grad=1.0):
     model.train()
