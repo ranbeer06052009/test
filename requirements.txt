@@ -1,0 +1,15 @@
+# Deep Learning and Math
+torch
+numpy
+
+# Machine Learning and Evaluation
+scikit-learn
+
+# Visualization
+matplotlib
+
+# Dataset downloading
+gdown
+
+# Notebook environment
+jupyter

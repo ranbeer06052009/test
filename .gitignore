@@ -1,0 +1,20 @@
+src/.DS_Store
+src/notebooks/.DS_Store
+src/results/.DS_Store
+src/results/loses/.DS_Store
+src/results/models/.DS_Store
+.DS_Store
+__pycache__/
+*.pyc
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Data and models
+data/
+best_model.pth
