@@ -18,8 +18,7 @@ def train_epoch(model, dataloader, optimizer, criterion, device='cuda', clip_gra
         
         optimizer.zero_grad()
         
-        logits, h_kg_out = model(vision, audio, text, kg_features=None)
-        features = {'h_kg': h_kg_out}
+        logits, features = model(vision, audio, text, kg_features=None)
         
         loss, l_task, l_logic = criterion(logits, labels, features)
         loss.backward()
@@ -54,8 +53,7 @@ def test(model, dataloader, criterion, device='cuda', return_preds=False):
             text = text.to(device)
             labels = labels.to(device)
             
-            logits, h_kg_out = model(vision, audio, text, kg_features=None)
-            features = {'h_kg': h_kg_out}
+            logits, features = model(vision, audio, text, kg_features=None)
             
             loss, l_task, l_logic = criterion(logits, labels, features)
             
