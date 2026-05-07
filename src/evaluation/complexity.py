@@ -1,5 +1,5 @@
 import time
-from src.utils import format_time
+from utils import format_time
 
 def get_all_params(li):
     params = 0

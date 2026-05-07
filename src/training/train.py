@@ -1,7 +1,7 @@
 import os
 import torch
 import numpy as np
-from ..evaluation.performance import eval_affect
+from evaluation.performance import eval_affect
 
 def train_epoch(model, dataloader, optimizer, criterion, device='cuda', clip_grad=1.0):
     model.train()
@@ -86,7 +86,7 @@ def test(model, dataloader, criterion, device='cuda', return_preds=False):
 
 
 def train(model, train_loader, valid_loader, criterion, optimizer, epochs=50, device='cuda', scheduler=None, clip_grad=1.0, save_path='best_model.pth'):
-    history = {'train_loss': [], 'val_loss': [], 'val_acc': []}
+    history = {'train_loss': [], 'val_loss': [], 'val_acc': [], 'train_task': [], 'valid_task': [], 'train_logic': [], 'valid_logic': []}
     best_val_loss = float('inf')
     
     for epoch in range(epochs):
@@ -99,6 +99,10 @@ def train(model, train_loader, valid_loader, criterion, optimizer, epochs=50, de
         history['train_loss'].append(t_loss)
         history['val_loss'].append(v_loss)
         history['val_acc'].append(v_acc)
+        history['train_task'].append(t_task)
+        history['valid_task'].append(val_metrics['Task'])
+        history['train_logic'].append(t_logic)
+        history['valid_logic'].append(val_metrics['Logic'])
         
         print(f"Epoch {epoch+1}/{epochs} | Train Loss: {t_loss:.4f} | Val Loss: {v_loss:.4f} | Val Acc: {v_acc:.4f}")
         
